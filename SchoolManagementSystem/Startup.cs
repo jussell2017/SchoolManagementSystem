@@ -7,7 +7,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SchoolManagementSystem.Contracts;
 using SchoolManagementSystem.Data;
+using SchoolManagementSystem.Mappings;
+using SchoolManagementSystem.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +33,13 @@ namespace SchoolManagementSystem
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+            //Add reference for Repository and Contracts to Startup file
+            services.AddScoped<IParentsRepository, ParentsRepository>();
+            services.AddScoped<IStudentRepository, StudentRepository>();
+
+            services.AddAutoMapper(typeof(Maps));
+
+
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();

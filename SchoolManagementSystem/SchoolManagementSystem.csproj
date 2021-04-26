@@ -6,6 +6,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\Migrations\20210426035914_AddedEmployeeDataPoints.cs" />
+    <Compile Remove="Data\Migrations\20210426035914_AddedEmployeeDataPoints.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210426040058_AddedEmployeeDataPoints.cs" />
+    <Compile Remove="Data\Migrations\20210426040058_AddedEmployeeDataPoints.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210426040220_AddedEmployeeDataPoints.cs" />
+    <Compile Remove="Data\Migrations\20210426040220_AddedEmployeeDataPoints.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210426040727_add-migraion AddedEmployeeDataPoints.cs" />
+    <Compile Remove="Data\Migrations\20210426040727_add-migraion AddedEmployeeDataPoints.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210426132634_add-migration AddedEmployeeDataPoints.cs" />
+    <Compile Remove="Data\Migrations\20210426132634_add-migration AddedEmployeeDataPoints.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.13" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.13" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.13" />
