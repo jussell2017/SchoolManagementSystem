@@ -1,0 +1,119 @@
+﻿@model IEnumerable<SchoolManagementSystem.Models.StudentVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MiddleName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DOB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HeightFeet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HeightInches)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudendEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentPhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BirthEntryNum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentGrade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentClass)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentHouse)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentAdditionalInfo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MiddleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DOB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HeightFeet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HeightInches)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudendEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentPhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BirthEntryNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentGrade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentClass)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentHouse)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentAdditionalInfo)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
