@@ -17,6 +17,5 @@ namespace SchoolManagementSystem.Data
         public DbSet<Student> Students { get; set; }
         public DbSet<Parents> SParent { get; set; }
         public DbSet<Employee> Employees { get; set; }
-        public DbSet<SchoolManagementSystem.Models.StudentVM> StudentVM { get; set; }
     }
 }
