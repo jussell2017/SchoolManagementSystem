@@ -15,8 +15,9 @@ namespace SchoolManagementSystem.Models
         public string MiddleName { get; set; }
         [Display(Name ="Last Name")]
         public string LastName { get; set; }
-        
-        
+       /* [Display(Name ="Date Created")]
+        public DateTime DateCreated { get; set; }*/             
+       
     }
     public class StudentDetailsVM
     {
