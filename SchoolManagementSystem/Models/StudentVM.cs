@@ -2,16 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace SchoolManagementSystem.Models
 {
     public class StudentVM
     {
         public int Id { get; set; }
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
-        public string LastName { get; set; }
+        [Display(Name = "Middle Name")]
         public string MiddleName { get; set; }
-        
+        [Display(Name ="Last Name")]
+        public string LastName { get; set; }
+       /* [Display(Name ="Date Created")]
+        public DateTime DateCreated { get; set; }*/             
+       
     }
     public class StudentDetailsVM
     {

@@ -45,21 +45,25 @@ namespace SchoolManagementSystem.Controllers
         // POST: StudentController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(StudentDetailsVM model)
+        public ActionResult Create(StudentVM collection)
         {
             try
             {
                 if (!ModelState.IsValid)
                 {
-                    return View(model);
+                    return View(collection);
                 }
-                var Student = _mapper.Map<Student>(model);
+                var Student = _mapper.Map<Student>(collection);
+              //  Student.DOB= DateTime.Now;
+
                 var isSuccess = _repo.Create(Student);
+
                 if (!isSuccess)
                 {
-                    ModelState.AddModelError("", "Something Went Wrong...");
-                    return View(model);
+                    ModelState.AddModelError("", "There might be an error!");
+                    return View(collection);
                 }
+
                 return RedirectToAction(nameof(Index));
             }
 
