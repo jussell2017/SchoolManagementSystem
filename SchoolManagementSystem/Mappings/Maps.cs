@@ -13,8 +13,10 @@ namespace SchoolManagementSystem.Mappings
         public Maps()
         {
             CreateMap<Student, StudentVM>().ReverseMap();
+            CreateMap<Student, StudentDetailsVM>().ReverseMap();
             CreateMap<Parents, ParentsVM>().ReverseMap();
             CreateMap<Employee, EmployeeVM>().ReverseMap();
+            
         }
     }
 }

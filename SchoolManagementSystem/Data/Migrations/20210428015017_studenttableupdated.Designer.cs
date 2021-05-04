@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SchoolManagementSystem.Data;
 
 namespace SchoolManagementSystem.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210428015017_studenttableupdated")]
+    partial class studenttableupdated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -265,9 +267,6 @@ namespace SchoolManagementSystem.Data.Migrations
                     b.Property<string>("Parent2PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("StudentId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.ToTable("SParent");
@@ -284,7 +283,8 @@ namespace SchoolManagementSystem.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("BirthEntryNum")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<DateTime>("DOB")
                         .HasColumnType("datetime2");
@@ -310,19 +310,22 @@ namespace SchoolManagementSystem.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StudentClass")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<string>("StudentEmail")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StudentGrade")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<string>("StudentHouse")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StudentId")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<string>("StudentPhoneNumber")
                         .HasColumnType("nvarchar(max)");
@@ -343,7 +346,8 @@ namespace SchoolManagementSystem.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("BirthEntryNum")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<DateTime>("DOB")
                         .HasColumnType("datetime2");
@@ -351,11 +355,13 @@ namespace SchoolManagementSystem.Data.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("HeightFeet")
-                        .HasColumnType("int");
+                    b.Property<string>("HeightFeet")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(1)");
 
-                    b.Property<int>("HeightInches")
-                        .HasColumnType("int");
+                    b.Property<string>("HeightInches")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
@@ -367,19 +373,22 @@ namespace SchoolManagementSystem.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StudentClass")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<string>("StudentEmail")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StudentGrade")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<string>("StudentHouse")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StudentId")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<string>("StudentPhoneNumber")
                         .HasColumnType("nvarchar(max)");

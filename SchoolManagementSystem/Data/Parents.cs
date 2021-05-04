@@ -11,6 +11,9 @@ namespace SchoolManagementSystem.Data
     {
         [Key]
         public int Id { get; set; }
+
+        [ForeignKey("StudendId")]
+        public int StudentId { get; set; }
     
         public String Parent1FirstName { get; set; }
 

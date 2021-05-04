@@ -16,7 +16,7 @@ namespace SchoolManagementSystem.Controllers
         private readonly IStudentRepository _repo;
         private readonly IMapper _mapper;
 
-        public StudentController (IStudentRepository repo, IMapper mapper)
+        public StudentController(IStudentRepository repo, IMapper mapper)
         {
             _repo = repo;
             _mapper = mapper;
@@ -45,15 +45,28 @@ namespace SchoolManagementSystem.Controllers
         // POST: StudentController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(StudentDetailsVM model)
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return View(model);
+                }
+                var Student = _mapper.Map<Student>(model);
+                var isSuccess = _repo.Create(Student);
+                if (!isSuccess)
+                {
+                    ModelState.AddModelError("", "Something Went Wrong...");
+                    return View(model);
+                }
                 return RedirectToAction(nameof(Index));
             }
-            catch
+
+            catch(Exception ex)
             {
-                return View();
+                ModelState.AddModelError("", "Something Went Wrong...");
+                return View(model);
             }
         }
 
