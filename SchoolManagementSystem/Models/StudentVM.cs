@@ -9,11 +9,11 @@ namespace SchoolManagementSystem.Models
     public class StudentVM
     {
         public int Id { get; set; }
-        [Display(Name = "First Name")]
+      //  [Display(Name = "First Name")]
         public string FirstName { get; set; }
-        [Display(Name = "Middle Name")]
+      //  [Display(Name = "Middle Name")]
         public string MiddleName { get; set; }
-        [Display(Name ="Last Name")]
+       // [Display(Name ="Last Name")]
         public string LastName { get; set; }
        /* [Display(Name ="Date Created")]
         public DateTime DateCreated { get; set; }*/             
@@ -27,8 +27,8 @@ namespace SchoolManagementSystem.Models
         public string LastName { get; set; }
         public string MiddleName { get; set; }
         public DateTime DOB { get; set; }
-        public int HeightFeet { get; set; }
-        public int HeightInches { get; set; }
+        public char HeightFeet { get; set; }
+        public char HeightInches { get; set; }
         public string Address { get; set; }
         public string StudentEmail { get; set; }
         public string StudentPhoneNumber { get; set; }

@@ -30,8 +30,8 @@ namespace SchoolManagementSystem.Repository
 
         public ICollection<Student> FindAll()
         {
-          var Students = _db.Students.ToList();
-          return Students;
+            var Student = _db.Students.ToList();
+          return Student;
         }
 
         public Student FindById(int id)
