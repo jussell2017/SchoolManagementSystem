@@ -33,7 +33,13 @@ namespace SchoolManagementSystem.Controllers
         // GET: StudentController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            if (!_repo.isExists(id))
+            {
+                return NotFound();
+            }
+            var student = _repo.FindById(id);
+            var mod = _mapper.Map<StudentDetailsVM>(student);
+            return View(mod);
         }
 
         // GET: StudentController/Create
