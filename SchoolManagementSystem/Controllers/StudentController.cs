@@ -123,16 +123,33 @@ namespace SchoolManagementSystem.Controllers
         // GET: StudentController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            if (!_repo.isExists(id))
+            {
+                return NotFound();
+            }
+            var Student = _repo.FindById(id);
+            var mod = _mapper.Map<StudentDetailsVM>(Student);
+
+            return View(mod);
         }
 
         // POST: StudentController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(StudentDetailsVM mod)
+        public ActionResult Delete(int id, StudentDetailsVM mod)
         {
             try
             {
+                var student = _repo.FindById(id);
+                if(student == null)
+                {
+                    return NotFound();
+                }
+                var isSuccess = _repo.Delete(student);
+                if (!isSuccess)
+                {
+                    return View(mod);
+                }
 
                 return RedirectToAction(nameof(Index));
             }
