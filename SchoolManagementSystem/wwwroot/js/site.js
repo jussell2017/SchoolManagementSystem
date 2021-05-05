@@ -2,3 +2,8 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+
+//This edits the look of the table layout
+$(document).ready(function () {
+    $('#tblData').DataTable();
+});
