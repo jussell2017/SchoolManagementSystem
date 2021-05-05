@@ -33,7 +33,13 @@ namespace SchoolManagementSystem.Controllers
         // GET: StudentController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            if (!_repo.isExists(id))
+            {
+                return NotFound();
+            }
+            var student = _repo.FindById(id);
+            var mod = _mapper.Map<StudentDetailsVM>(student);
+            return View(mod);
         }
 
         // GET: StudentController/Create
@@ -45,15 +51,15 @@ namespace SchoolManagementSystem.Controllers
         // POST: StudentController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(StudentDetailsVM collection)
+        public ActionResult Create(StudentDetailsVM mod)
         {
             try
             {
                 if (!ModelState.IsValid)
                 {
-                    return View(collection);
+                    return View(mod);
                 }
-                var Student = _mapper.Map<Student>(collection);
+                var Student = _mapper.Map<Student>(mod);
               //  Student.DOB= DateTime.Now;
 
                 var isSuccess = _repo.Create(Student);
@@ -61,36 +67,55 @@ namespace SchoolManagementSystem.Controllers
                 if (!isSuccess)
                 {
                     ModelState.AddModelError("", "There might be an error!");
-                    return View(collection);
+                    return View(mod);
                 }
 
                 return RedirectToAction(nameof(Index));
             }
 
-            catch(Exception ex)
+            catch
             {
-                ModelState.AddModelError("", "Something Went Wrong...");
-                return View(collection);
+                ModelState.AddModelError("", "There might be an error!");
+                return View(mod);
             }
         }
 
         // GET: StudentController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            if (!_repo.isExists(id))
+            {
+                return NotFound();
+            }
+            var Student = _repo.FindById(id);
+            var mod = _mapper.Map<StudentDetailsVM>(Student);
+            return View(mod);
         }
 
         // POST: StudentController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(StudentDetailsVM mod)
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return View(mod);
+                }
+                var Student = _mapper.Map<Student>(mod);               
+                var isSuccess = _repo.Update(Student);
+
+                if (!isSuccess)
+                {
+                    ModelState.AddModelError("", "There might be an error!");
+                    return View(mod);
+                }
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
+                ModelState.AddModelError("", "There might be an error!");
                 return View();
             }
         }
@@ -98,16 +123,34 @@ namespace SchoolManagementSystem.Controllers
         // GET: StudentController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            if (!_repo.isExists(id))
+            {
+                return NotFound();
+            }
+            var Student = _repo.FindById(id);
+            var mod = _mapper.Map<StudentDetailsVM>(Student);
+
+            return View(mod);
         }
 
         // POST: StudentController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, StudentDetailsVM mod)
         {
             try
             {
+                var student = _repo.FindById(id);
+                if(student == null)
+                {
+                    return NotFound();
+                }
+                var isSuccess = _repo.Delete(student);
+                if (!isSuccess)
+                {
+                    return View(mod);
+                }
+
                 return RedirectToAction(nameof(Index));
             }
             catch

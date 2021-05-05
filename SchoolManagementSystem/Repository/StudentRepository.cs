@@ -30,14 +30,20 @@ namespace SchoolManagementSystem.Repository
 
         public ICollection<Student> FindAll()
         {
-          var Students = _db.Students.ToList();
-          return Students;
+            var Student = _db.Students.ToList();
+          return Student;
         }
 
         public Student FindById(int id)
         {
             var Student = _db.Students.Find(id);
             return Student;
+        }
+
+        public bool isExists(int id)
+        {
+            var exists = _db.Students.Any(q => q.Id == id);
+            return exists;
         }
 
         public bool Save()
