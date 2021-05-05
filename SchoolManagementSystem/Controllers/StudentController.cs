@@ -45,7 +45,7 @@ namespace SchoolManagementSystem.Controllers
         // POST: StudentController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(StudentVM collection)
+        public ActionResult Create(StudentDetailsVM collection)
         {
             try
             {
@@ -70,7 +70,7 @@ namespace SchoolManagementSystem.Controllers
             catch(Exception ex)
             {
                 ModelState.AddModelError("", "Something Went Wrong...");
-                return View(model);
+                return View(collection);
             }
         }
 
