@@ -19,7 +19,7 @@ namespace SchoolManagementSystem
 
         private static void SeedUsers(UserManager<IdentityUser> userManager)
         {
-            if(userManager.FindByNameAsync("Administrator").Result == null)
+            if(userManager.FindByNameAsync("admin@localhost.com").Result == null)
             {
                 var user = new IdentityUser
                 {
