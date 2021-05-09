@@ -1,4 +1,7 @@
-﻿@model SchoolManagementSystem.Models.StudentDetailsVM
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@model SchoolManagementSystem.Models.StudentDetailsVM
 
 @{
     ViewData["Title"] = "Details";
@@ -105,6 +108,12 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" class="btn btn-warning" asp-route-id="@Model.Id"><i class="fas fa-user-edit"></i></a>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        if (User.IsInRole("Administrator"))
+        {
+            <a asp-action="Edit" class="btn btn-warning" asp-route-id="@Model.Id"><i class="fas fa-user-edit"></i></a>
+        }
+    }
     <a asp-action="Index" class="btn btn-outline-primary">To Dashboard</a>
 </div>
